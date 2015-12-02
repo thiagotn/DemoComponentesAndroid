@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
 
     private EditText etTel;
     private Button btLigar;
+    private Button btContatos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +26,15 @@ public class MainActivity extends AppCompatActivity {
 
         etTel = (EditText) findViewById(R.id.etTel);
         btLigar = (Button) findViewById(R.id.btLigar);
+        btContatos = (Button) findViewById(R.id.btContatos);
+
+        btContatos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, ListaContatosActivity.class);
+                startActivity(i);
+            }
+        });
 
         btLigar.setOnClickListener(new View.OnClickListener() {
             @Override

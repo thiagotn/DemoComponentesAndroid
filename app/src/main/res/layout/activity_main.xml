@@ -32,7 +32,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/etContatos"
+        android:id="@+id/btContatos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/botao_ver_contatos"/>
