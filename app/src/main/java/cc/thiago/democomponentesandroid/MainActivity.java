@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(MainActivity.this, ListaContatosActivity.class);
-                startActivity(i);
+                startActivityForResult(i, 0);
             }
         });
 
@@ -42,6 +42,23 @@ public class MainActivity extends AppCompatActivity {
                 ligar();
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode) {
+            case 0:
+                switch (resultCode) {
+                    case RESULT_OK:
+                        etTel.setText(data.getStringExtra("telefone"));
+                        break;
+                    case RESULT_CANCELED:
+
+                        break;
+                }
+                break;
+        }
     }
 
     @Override

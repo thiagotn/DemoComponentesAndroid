@@ -1,9 +1,12 @@
 package cc.thiago.democomponentesandroid;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -44,6 +47,15 @@ public class ListaContatosActivity extends AppCompatActivity {
             } while (phones.moveToNext());
 
             lvContatos.setAdapter(new ContatosAdapter(this, contatos));
+            lvContatos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    Intent i = new Intent();
+                    i.putExtra("telefone", contatos.get(position).getTelefone());
+                    setResult(RESULT_OK, i);
+                    finish();
+                }
+            });
         }
     }
 }
